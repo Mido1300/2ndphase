@@ -1,0 +1,221 @@
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.3s;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .modalContent {
+    background-color: var(--card-bg);
+    margin: 5% auto;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    width: 90%;
+    max-width: 720px;
+    animation: slideIn 0.3s;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .modalTitle {
+    font-size: 28px;
+    color: var(--primary);
+    font-weight: 700;
+  }
+  
+  .close {
+    color: var(--gray);
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  .close:hover {
+    color: var(--text-color);
+  }
+  
+  .avatarUpload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  
+  .avatarUpload img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 12px;
+    border: 2px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .avatarUpload input {
+    display: none;
+  }
+  
+  .avatarUpload label {
+    padding: 10px 20px;
+    background: var(--gradient);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .avatarUpload label:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+  
+  .formRow {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  
+  .formGroup {
+    flex: 1;
+    min-width: 220px;
+  }
+  
+  .formGroup label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: 14px;
+  }
+  
+  .required::after {
+    content: '*';
+    color: var(--danger);
+    margin-left: 4px;
+  }
+  
+  .formGroup input,
+  .formGroup select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    outline: none;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .formGroup input:focus,
+  .formGroup select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(127, 29, 29, 0.1);
+  }
+  
+  .formCheck {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+  }
+  
+  .formCheck input {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    accent-color: var(--primary);
+  }
+  
+  .formCheck label {
+    font-weight: 500;
+    font-size: 14px;
+  }
+  
+  .modalFooter {
+    margin-top: 32px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+  }
+  
+  .btnSuccess {
+    padding: 14px 28px;
+    font-size: 16px;
+    border-radius: 8px;
+    background: var(--gradient);
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .btnSecondary {
+    padding: 14px 28px;
+    font-size: 16px;
+    border-radius: 8px;
+    background-color: var(--gray);
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .btnSuccess:hover,
+  .btnSecondary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+  
+  @media (max-width: 768px) {
+    .formRow {
+      flex-direction: column;
+      gap: 16px;
+    }
+  
+    .modalContent {
+      width: 95%;
+      padding: 24px;
+      margin: 10% auto;
+    }
+  }

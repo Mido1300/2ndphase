@@ -1,0 +1,144 @@
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.3s;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .modalContent {
+    background-color: var(--card-bg);
+    margin: 5% auto;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    width: 90%;
+    max-width: 720px;
+    animation: slideIn 0.3s;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .modalTitle {
+    font-size: 28px;
+    color: var(--primary);
+    font-weight: 700;
+  }
+  
+  .close {
+    color: var(--gray);
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  .close:hover {
+    color: var(--text-color);
+  }
+  
+  .userHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+  
+  .userAvatarLarge {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 24px;
+    border: 4px solid var(--primary);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .userTitle h3 {
+    font-size: 28px;
+    margin-bottom: 8px;
+    color: var(--text-color);
+  }
+  
+  .userTitle p {
+    font-size: 16px;
+    color: var(--gray);
+  }
+  
+  .userDetailsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  
+  .detailItem {
+    margin-bottom: 16px;
+  }
+  
+  .detailLabel {
+    font-size: 14px;
+    color: var(--gray);
+    margin-bottom: 6px;
+  }
+  
+  .detailValue {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-color);
+  }
+  
+  .modalFooter {
+    margin-top: 32px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+  }
+  
+  .btnSecondary {
+    padding: 14px 28px;
+    font-size: 16px;
+    border-radius: 8px;
+    background-color: var(--gray);
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .btnSecondary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }

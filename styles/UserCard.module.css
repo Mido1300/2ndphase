@@ -1,0 +1,127 @@
+.userCard {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .userCard:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .userInfo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .userActive .userAvatar {
+    border: 3px solid var(--success);
+  }
+  
+  .userInactive .userAvatar {
+    border: 3px solid var(--gray);
+  }
+  
+  .userAvatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .userDetails {
+    flex-grow: 1;
+  }
+  
+  .userName {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text-color);
+  }
+  
+  .userEmail {
+    font-size: 14px;
+    color: var(--gray);
+    margin-bottom: 12px;
+  }
+  
+  .userBadges {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .badgeRole {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--info);
+  }
+  
+  .badgeActive {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+  }
+  
+  .badgeInactive {
+    background-color: rgba(107, 114, 128, 0.1);
+    color: var(--gray);
+  }
+  
+  .userActions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 12px;
+  }
+  
+  .btn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+  
+  .btn svg {
+    margin-right: 6px;
+  }
+  
+  .btnView {
+    background-color: var(--info);
+    color: white;
+  }
+  
+  .btnEdit {
+    background-color: var(--gray);
+    color: white;
+  }
+  
+  .btnDelete {
+    background-color: var(--danger);
+    color: white;
+  }

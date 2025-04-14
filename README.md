@@ -1,18 +1,23 @@
 # User Management Dashboard
 
-A React-based user management dashboard with login, user CRUD operations, dark/light mode, and responsive design.
+A modern user management dashboard built with Next.js, featuring light/dark mode, user CRUD operations, and responsive design.
 
 ## Features
-- Login with admin credentials (username: admin, password: 12345)
-- View, add, edit, and delete users
-- Filter users by status (all, active, inactive)
-- Search users by name or email
-- Dark/light mode toggle
+- Login system (username: admin, password: 12345)
+- User management (add, edit, view, delete)
+- Search and filter users
+- Light/dark theme toggle
 - Responsive design
-- Persists data in localStorage
+- Local storage persistence
 
-## Setup
+## Getting Started
+
+### Prerequisites
+- Node.js >= 14
+- npm or yarn
+
+### Installation
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/your-username/user-management-dashboard.git
    cd user-management-dashboard

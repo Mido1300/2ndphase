@@ -1,81 +1,82 @@
-import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
+import styles from '../styles/UserForm.module.css';
+import { FaTimes, FaUpload } from 'react-icons/fa';
 
-function UserForm({ form, avatarPreview, setAvatarPreview, onSubmit, onClose, title }) {
-  const { values, errors, handleChange, handleFileChange, validate } = form;
+export default function UserForm({ user, onSubmit, onClose, title, formProps }) {
+  const { values, handleChange, handleSubmit, setValues } = formProps;
+  const [preview, setPreview] = useState(values.avatar || 'https://via.placeholder.com/100');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validate()) {
-      onSubmit();
-      onClose();
+  useEffect(() => {
+    if (values.avatarFile) {
+      const reader = new FileReader();
+      reader.onload = () => setPreview(reader.result);
+      reader.readAsDataURL(values.avatarFile);
+    }
+  }, [values.avatarFile]);
+
+  const handleAvatarChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setValues({ ...values, avatarFile: file });
     }
   };
 
   return (
-    <div className="modal active" onClick={(e) => e.target.classList.contains('modal') && onClose()}>
-      <div className="modal-content">
-        <div className="modal-header">
-          <h2 className="modal-title">{title}</h2>
-          <span className="close" onClick={onClose}>
-            ×
+    <div className={styles.modal}>
+      <div className={styles.modalContent}>
+        <div className={styles.modalHeader}>
+          <h2 className={styles.modalTitle}>{title}</h2>
+          <span className={styles.close} onClick={onClose}>
+            <FaTimes />
           </span>
         </div>
         <form onSubmit={handleSubmit}>
-          <div className="avatar-upload">
-            <img src={avatarPreview} alt="Avatar Preview" />
-            <label htmlFor="avatar-upload">Upload Profile Picture</label>
+          <div className={styles.avatarUpload}>
+            <img src={preview} alt="Avatar Preview" />
+            <label htmlFor="avatar-upload">
+              <FaUpload /> {user ? 'Change Profile Picture' : 'Upload Profile Picture'}
+            </label>
             <input
               type="file"
               id="avatar-upload"
               accept="image/*"
-              onChange={(e) => handleFileChange(e, setAvatarPreview)}
+              onChange={handleAvatarChange}
             />
           </div>
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="name" className="required">
+          <div className={styles.formRow}>
+            <div className={styles.formGroup}>
+              <label htmlFor="name" className={styles.required}>
                 Full Name
               </label>
               <input
                 type="text"
                 id="name"
                 name="name"
-                className="form-control"
                 value={values.name}
                 onChange={handleChange}
                 required
               />
-              {errors.name && <span className="error-message">{errors.name}</span>}
             </div>
-            <div className="form-group">
-              <label htmlFor="email" className="required">
+            <div className={styles.formGroup}>
+              <label htmlFor="email" className={styles.required}>
                 Email Address
               </label>
               <input
                 type="email"
                 id="email"
                 name="email"
-                className="form-control"
                 value={values.email}
                 onChange={handleChange}
                 required
               />
-              {errors.email && <span className="error-message">{errors.email}</span>}
             </div>
           </div>
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="role" className="required">
+          <div className={styles.formRow}>
+            <div className={styles.formGroup}>
+              <label htmlFor="role" className={styles.required}>
                 Role
               </label>
-              <select
-                id="role"
-                name="role"
-                className="form-control"
-                value={values.role}
-                onChange={handleChange}
-                required
-              >
+              <select id="role" name="role" value={values.role} onChange={handleChange} required>
                 <option value="">Select a role</option>
                 <option value="admin">Admin</option>
                 <option value="manager">Manager</option>
@@ -83,17 +84,10 @@ function UserForm({ form, avatarPreview, setAvatarPreview, onSubmit, onClose, ti
                 <option value="customer">Customer</option>
                 <option value="viewer">Viewer</option>
               </select>
-              {errors.role && <span className="error-message">{errors.role}</span>}
             </div>
-            <div className="form-group">
+            <div className={styles.formGroup}>
               <label htmlFor="country">Country</label>
-              <select
-                id="country"
-                name="country"
-                className="form-control"
-                value={values.country}
-                onChange={handleChange}
-              >
+              <select id="country" name="country" value={values.country} onChange={handleChange}>
                 <option value="">Select a country</option>
                 <option value="USA">United States</option>
                 <option value="UK">United Kingdom</option>
@@ -108,74 +102,69 @@ function UserForm({ form, avatarPreview, setAvatarPreview, onSubmit, onClose, ti
               </select>
             </div>
           </div>
-          <div className="form-row">
-            <div className="form-group">
+          <div className={styles.formRow}>
+            <div className={styles.formGroup}>
               <label htmlFor="phone">Phone Number</label>
               <input
                 type="tel"
                 id="phone"
                 name="phone"
-                className="form-control"
                 value={values.phone}
                 onChange={handleChange}
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="birthdate" className="required">
+            <div className={styles.formGroup}>
+              <label htmlFor="birthdate" className={styles.required}>
                 Birth Date
               </label>
               <input
                 type="date"
                 id="birthdate"
                 name="birthdate"
-                className="form-control"
                 value={values.birthdate}
                 onChange={handleChange}
                 required
               />
-              {errors.birthdate && <span className="error-message">{errors.birthdate}</span>}
             </div>
           </div>
-          <div className="form-row">
-            <div className="form-group">
+          <div className={styles.formRow}>
+            <div className={styles.formGroup}>
               <label htmlFor="department">Department</label>
               <input
                 type="text"
                 id="department"
                 name="department"
-                className="form-control"
                 value={values.department}
                 onChange={handleChange}
               />
             </div>
-            <div className="form-group">
+            <div className={styles.formGroup}>
               <label htmlFor="position">Position</label>
               <input
                 type="text"
                 id="position"
                 name="position"
-                className="form-control"
                 value={values.position}
                 onChange={handleChange}
               />
             </div>
           </div>
-          <div className="form-check">
+          <div className={styles.formCheck}>
             <input
               type="checkbox"
-              id="is-active"
+              id="isActive"
               name="isActive"
               checked={values.isActive}
               onChange={handleChange}
             />
-            <label htmlFor="is-active">Active User</label>
+            <label htmlFor="isActive">Active User</label>
           </div>
-          <div className="modal-footer">
-            <button type="button" className="btn btn-lg btn-secondary" onClick={onClose}>
+          <div className={styles.modalFooter}>
+            <button type="button" className={styles.btnSecondary} onClick={onClose}>
               Cancel
             </button>
-            <button type="submit" className="btn btn-lg btn-success">
-              {title === 'Add New User' ? 'Create User' : 'Save Changes'}
+            <button type="submit" className={styles.btnSuccess}>
+              {user ? 'Save Changes' : 'Create User'}
             </button>
           </div>
         </form>
@@ -183,14 +172,3 @@ function UserForm({ form, avatarPreview, setAvatarPreview, onSubmit, onClose, ti
     </div>
   );
 }
-
-UserForm.propTypes = {
-  form: PropTypes.object.isRequired,
-  avatarPreview: PropTypes.string.isRequired,
-  setAvatarPreview: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
-};
-
-export default UserForm;

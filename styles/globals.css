@@ -1,0 +1,45 @@
+:root {
+    --primary: #7f1d1d;
+    --secondary: #b91c1c;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --info: #3b82f6;
+    --light: #f9fafb;
+    --dark: #1f2937;
+    --gray: #6b7280;
+    --light-gray: #d1d5db;
+    --bg-color: #f3f4f6;
+    --text-color: #111827;
+    --card-bg: #ffffff;
+    --border-color: #e5e7eb;
+    --shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    --shadow-sm: 0 4px 8px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.15);
+    --gradient: linear-gradient(135deg, #7f1d1d, #dc2626);
+  }
+  
+  .dark-mode {
+    --bg-color: #111827;
+    --text-color: #f9fafb;
+    --card-bg: #1f2937;
+    --border-color: #374151;
+    --shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    --shadow-sm: 0 4px 8px rgba(0, 0, 0, 0.25);
+    --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.35);
+    --light-gray: #4b5563;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  }
+  
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+  }
